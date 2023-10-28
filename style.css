@@ -1,5 +1,7 @@
 body {
     font-family: "Arial", sans-serif;
+    background: rgb(253,0,0);
+    background: linear-gradient(90deg, rgba(253,0,0,1) 0%, rgba(255,28,28,1) 50%, rgba(244,208,208,1) 100%);
   }
   
   section {
@@ -32,4 +34,25 @@ body {
     cursor: pointer;
     line-height: 100px;
     font-size: 60px;
+  }
+  
+  .piscar {
+    animation: piscar 1s infinite;
+    background-color: rgb(251, 254, 254);
+    width: 100px;
+    font-size: 60px;
+    font-family: "Permanent Marker", cursive;
+    /* line-height: 100px; */
+
+  }
+  @keyframes piscar {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
   }

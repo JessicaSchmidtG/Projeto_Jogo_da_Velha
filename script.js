@@ -40,7 +40,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 // Função para trocar o jogador a cada rodada
 function handlePlayerChange() {
   // Colocar um operador ternário definindo currentPlayer para ser o X ou O
-  currentPlayer === "X" ? "O" : "X";
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
   // Usar innerHTML para exibir a mensagem de status de acordo com a função currentPlayerTurn
   statusDisplay.innerHTML = currentPlayerTurn();
 }
@@ -60,6 +60,9 @@ function handleResultValidation() {
     }
     if (a === b && b === c) {
       roundWon = true;
+      document.querySelector(`[data-cell-index="${winCondition[0]}"]`).classList.toggle('piscar');
+      document.querySelector(`[data-cell-index="${winCondition[1]}"]`).classList.toggle('piscar');
+      document.querySelector(`[data-cell-index="${winCondition[2]}"]`).classList.toggle('piscar');
       break;
     }
   }
@@ -109,18 +112,28 @@ function handleRestartGame() {
   gameState = ["", "", "", "", "", "", "", "", ""];
   // Definir o statusDisplay.innerHTML com o valor da função currentPlayerTurn
   statusDisplay.innerHTML = currentPlayerTurn();
-  /* 
+  
+  document.querySelectorAll(".cell").forEach((grid)=>{
+    grid.style.backgroundColor = ""
+  })
+  /*
   Usar querySelectorAll e .cell como atributo e colocar um laço forEach 
   e como argumento utilizar innerHtml como ""
   */
+ document.querySelectorAll(".cell").forEach((grid) =>{ 
+  grid.innerHTML = "";
+ });
 }
 
 /*
  Usar querySelectorAll e .cell como atributo e colocar um laço forEach 
  para adicionar o listener de click chamando a função handleCellClick
  */
-
+ document.querySelectorAll(".cell").forEach((grid) => {
+  grid.addEventListener("click", handleCellClick);
+});
 /*
  Usar querySelector e .game--restart como atributo e adicionar o listener
  com click chamando a função handleRestartGame
  */
+document.querySelector(".game--restart").addEventListener("click", handleRestartGame);
