@@ -114,7 +114,7 @@ function handleRestartGame() {
   statusDisplay.innerHTML = currentPlayerTurn();
   
   document.querySelectorAll(".cell").forEach((grid)=>{
-    grid.style.backgroundColor = ""
+    grid.style.backgroundColor = "red"
   })
   /*
   Usar querySelectorAll e .cell como atributo e colocar um laço forEach 
@@ -123,6 +123,9 @@ function handleRestartGame() {
  document.querySelectorAll(".cell").forEach((grid) =>{ 
   grid.innerHTML = "";
  });
+document.querySelectorAll('.cell').forEach(element => {
+  element.classList.remove('piscar')
+})
 }
 
 /*
@@ -137,3 +140,5 @@ function handleRestartGame() {
  com click chamando a função handleRestartGame
  */
 document.querySelector(".game--restart").addEventListener("click", handleRestartGame);
+
+
